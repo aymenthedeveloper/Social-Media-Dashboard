@@ -1,0 +1,252 @@
+:root{
+    --Lime-Green: hsl(163, 72%, 41%);
+    --Bright-Red: hsl(356, 69%, 56%);
+
+    --Facebook: hsl(208, 92%, 53%);
+    --Twitter: hsl(203, 89%, 53%);
+    --Instagram: hsl(37, 97%, 70%), hsl(329, 70%, 58%);
+    --YouTube: hsl(348, 97%, 39%);
+
+    /* Dark Theme */
+    --darkMode-bg-clr: hsl(230, 17%, 14%);
+    --darkMode-bg-top-clr: hsl(232, 19%, 15%);
+    --cards-bg-clr: hsl(228, 28%, 20%);
+    --primary-text-clr: hsl(0, 0%, 100%);
+    --secondary-text-clr: hsl(228, 34%, 66%);
+
+    --mar-x: 10.125rem;
+  }
+  :root.light{
+    --darkMode-bg-clr: hsl(0, 0%, 100%);
+    --darkMode-bg-top-clr: hsl(225, 100%, 98%);
+    --cards-bg-clr: hsl(227, 47%, 96%);
+    --primary-text-clr: hsl(230, 17%, 14%);
+    --secondary-text-clr: hsl(228, 12%, 44%);
+  }
+  body{
+    color: var(--primary-text-clr);
+    margin: 0;
+    font-family: 'inter', sans-serif;
+    background: var(--darkMode-bg-clr);
+  }
+  main{
+    max-width: 1440px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    margin-inline: auto;
+    position: relative;
+  }
+  .bg-element{
+    inset: 0 0 auto 0;
+    background-color: var(--darkMode-bg-top-clr);
+    position: absolute;
+    height: 250px;
+    border-radius: 0 0 24px 24px;
+    z-index: 0;
+  }
+  .overview,
+  .overview-header,
+  .today-overview{
+    margin-inline: var(--mar-x);
+    position: relative;
+  }
+  
+  .overview-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+    padding-top: 1.25rem;
+  }
+  .overview-header .title h1{
+    font-size: 1.75rem;
+    margin-block: .5em .125em;
+  }
+  .overview-header .title p{
+    font-size: .95rem;
+    margin-block: .25em .675rem;
+    color: var(--secondary-text-clr);
+
+  }
+  .overview-header .dark-mode{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    font-size: .875rem;
+    color: var(--secondary-text-clr);
+    white-space: nowrap;
+  }
+  .overview-header .dark-mode .toggle .checkbox{
+    display: none;
+  }
+  .overview-header .dark-mode .toggle{
+    background: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    border-radius: 14px;
+    margin-right: 3px;
+    position: relative;
+    cursor: pointer;
+  }
+  .overview-header .dark-mode .toggle::after{
+    content: "";
+    background-color: black;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    left: 2px;
+    top: 2px;
+    transition-duration: .3s;
+  }
+  :root.light .overview-header .dark-mode .toggle{
+    background: hsl(230, 22%, 74%);
+  }
+  :root.light .overview-header .dark-mode .toggle::after{
+    left: 26px;
+    background-color: var(--cards-bg-clr);
+  }
+
+  /* .overview styles */
+
+  .overview{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+    margin-bottom: 48px;
+  }
+  .overview .platform{
+    border-radius: 8px;
+    border-block-start: 4px solid;
+    border-image-slice: 1;
+    border-block-end: 0;
+    border-inline: 0;
+    background-color: var(--cards-bg-clr);
+  }
+  .overview .platform.facebook{border-image-source: linear-gradient(var(--Facebook) ,var(--Facebook));}
+  .overview .platform.twitter{border-image-source: linear-gradient(var(--Twitter) ,var(--Twitter));}
+  .overview .platform.instagram{border-image-source: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%));}
+  .overview .platform.youtube{border-image-source: linear-gradient(var(--YouTube) ,var(--YouTube));}
+  .overview .platform .account{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    margin-block: 1rem 6px;
+    color: var(--secondary-text-clr);
+  }
+  .overview .platform .followers-count{
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: 700;
+    margin-block: 0;
+    letter-spacing: -1px;
+  }
+  .overview .platform .followers-label{
+    color: var(--secondary-text-clr);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 12px;
+    margin-block: 0;
+  }
+  .overview .platform .change{
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--Lime-Green);
+    font-weight: bold;
+    column-gap: 4px;
+    justify-content: center;
+    margin-block: 12px;
+  }
+  .overview .platform .change.down{
+    color: var(--Bright-Red);
+
+  }
+  
+  /* overview today styles */
+
+
+  .today-overview .cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+  }
+  .today-overview .cards .card{
+    padding-block: .875rem;
+    padding-inline: 1.75em 2em;
+    background-color: var(--cards-bg-clr);
+    border-radius: 8px;
+  }
+  .today-overview .card-top,
+  .today-overview .card-bottom,
+  .today-overview .card-bottom .today-change{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .today-overview .card-top p{
+    font-size: 14px;
+    color: var(--secondary-text-clr);
+
+  }
+  .today-overview .card-bottom .today-count{
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-block: .25em;
+  }
+  .today-overview .card-bottom .today-change{
+    font-size: 13px;
+    color: var(--Lime-Green);
+    column-gap: 3px;
+    margin-bottom: 0;
+  }
+  .today-overview .card-bottom .today-change.down{
+    color: var(--Bright-Red);
+  }
+
+
+  @media screen and (max-width: 1400px) {
+    :root{
+      --mar-x: 7rem;
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    :root{
+      --mar-x: 3rem;
+    }
+  }
+  @media screen and (max-width: 900px) {
+    .overview, .today-overview .cards{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .overview-header{
+      flex-direction: column;
+      align-items: revert;
+    }
+    .overview-header .title h1{
+      font-size: 1.525rem;
+    }
+    .overview-header .dark-mode{
+      border-block-start: 2px solid var(--cards-bg-clr);
+      padding-block: 1rem 0;
+      margin-top: 1rem;
+      justify-content: space-between;
+    }
+    .overview, .today-overview .cards{
+      grid-template-columns: 1fr;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    :root{
+      --mar-x: 1.375rem;
+    }
+    main{
+      max-width: 375px;
+    }
+  }
